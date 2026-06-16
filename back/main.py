@@ -50,7 +50,5 @@ def get_recommendation(data: UserInput):
         "recommended": recommended,
         "recommendedstra": strategy,
         "tip": tip,
-        "lucky_keyword": random.choice(["로제타", "상태창", "먼치킨", "회광반조", "계약 결혼"])
-    }
-        "lucky_keyword": random.choice(["아낙스 안드론", "상태창", "절대자", "회광반조", "계약 결혼"])
+        "keyword": random.choice(["먼치킨", "TS", "이혼", "착각", "날먹"])
     }
