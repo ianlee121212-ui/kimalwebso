@@ -5,12 +5,11 @@ import random
 
 app = FastAPI(title="Novel Genre & Plot Recommender API")
 
-# 입력 데이터 검증을 위한 Pydantic 모델
 class UserInput(BaseModel):
-    vunwigi: str       # '가벼움', '무거움', '피폐'
-    syoje: str          # '회빙환(회귀/빙의/환생)', '전문가', '성장물'
-    hyang: str     # '남성향', '여성향'
-    speed: int       # 주당 집필 가능 편수 (1~7)
+    vunwigi: str       
+    syoje: str     
+    hyang: str     
+    speed: int      
 
 @app.get("/")
 def read_root():
@@ -43,7 +42,7 @@ def get_recommendation(data: UserInput):
     if data.vunwigi == "무거움" or data.vunwigi == "피폐":
         tip += "좀 무겁긴 함."
     
-    strategy = "주 5회 이상" if data.speed >= 4 else "1-2회 게으른 외국 작가"
+    strategy = "주 5회 이상" if data.speed >= 4 else "1-2회 게으른 외국파 작가"
 
     return {
         "status": "success",
