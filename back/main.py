@@ -18,11 +18,11 @@ def read_root():
 
 @app.post("/recommend")
 def get_recommendation(data: UserInput):
-    recommend = []
+    recommended = []
     tip = ""
     
-    if data.target_audience == "남성향":
-        if data.hyang == "회빙환(회귀/빙의/환생)":
+    if data.hyang == "남성향":
+        if data.syoje == "회빙환(회귀/빙의/환생)":
             recommended = ["현대 판타지", "재벌물", "대체역사"]
             tip = "사이다 터뜨리는 슈퍼맨이 되어보세요."
         elif data.syoje == "전문가":
@@ -33,22 +33,24 @@ def get_recommendation(data: UserInput):
             tip = "조금 진부해도 정석전인 장르속에서 살아봐요."
             
     else: 
-        if data.hyang == "회빙환":
-            recommended = ["로맨스 판타지", "육아물", "악녀 빙의물"]
+        if data.hyang == "회빙환(회귀/빙의/환생)":
+            recommended = ["로맨스 판타지", "육아물", "악녀물"]
             tip = "감정서사 극한을 추구해보세요."
         else:
             recommended = ["현대 로맨스", "걸크러시 판타지"]
             tip = "감정서사의 극한을 추구해보세요."
 
-    if data.preferred_tone == "무거움" or data.preferred_tone == "피폐":
+    if data.vunwigi == "무거움" or data.vunwigi == "피폐":
         tip += "좀 무겁긴 함."
     
-    strategy = "주 5회 이상" if data.writing_speed >= 4 else "1-2회 게으른 외국 작가"
+    strategy = "주 5회 이상" if data.speed >= 4 else "1-2회 게으른 외국 작가"
 
     return {
         "status": "success",
         "recommended": recommended,
         "recommendedstra": strategy,
         "tip": tip,
+        "lucky_keyword": random.choice(["로제타", "상태창", "먼치킨", "회광반조", "계약 결혼"])
+    }
         "lucky_keyword": random.choice(["아낙스 안드론", "상태창", "절대자", "회광반조", "계약 결혼"])
     }
