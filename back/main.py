@@ -40,7 +40,7 @@ def get_recommendation(data: UserInput):
             tip = "감정서사의 극한을 추구해보세요."
 
     if data.vunwigi == "무거움" or data.vunwigi == "피폐":
-        tip += "좀 무겁긴 함."
+        tip += "꽤 심적 타격 받을 것입니다."
     
     strategy = "주 5회 이상" if data.speed >= 4 else "1-2회 게으른 외국파 작가"
 
